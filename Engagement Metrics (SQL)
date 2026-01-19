@@ -1,0 +1,6 @@
+SELECT
+    account_id,
+    COUNT(DISTINCT DATE_TRUNC('month', transaction_date)) AS active_months,
+    MAX(transaction_date) AS last_transaction_date
+FROM sme_transactions
+GROUP BY account_id;
