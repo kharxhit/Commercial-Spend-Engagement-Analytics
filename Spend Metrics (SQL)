@@ -1,0 +1,18 @@
+SELECT
+    account_id,
+    COUNT(transaction_id) AS total_transactions,
+    SUM(amount) AS total_spend,
+    AVG(amount) AS avg_transaction_value
+FROM sme_transactions
+GROUP BY account_id;
+
+
+-- Category-wise spend
+SELECT
+    account_id,
+    category,
+    SUM(amount) AS category_spend
+FROM sme_transactions
+GROUP BY account_id, category;
+
+
