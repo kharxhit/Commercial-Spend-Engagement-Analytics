@@ -1,0 +1,13 @@
+CREATE TABLE sme_transactions (
+    transaction_id    BIGINT PRIMARY KEY,
+    account_id        BIGINT,
+    transaction_date  DATE,
+    category          VARCHAR(50),
+    amount            DECIMAL(12,2)
+);
+
+CREATE TABLE sme_accounts (
+    account_id        BIGINT PRIMARY KEY,
+    industry          VARCHAR(50),
+    onboarding_date   DATE
+);
