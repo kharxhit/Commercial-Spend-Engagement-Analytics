@@ -1,0 +1,16 @@
+WITH rfm_base AS (
+    SELECT
+        account_id,
+        MAX(transaction_date) AS last_txn,
+        COUNT(transaction_id) AS frequency,
+        SUM(amount) AS monetary
+    FROM sme_transactions
+    GROUP BY account_id
+)
+
+SELECT
+    account_id,
+    DATE_PART('day', CURRENT_DATE - last_txn) AS recency,
+    frequency,
+    monetary
+FROM rfm_base;
